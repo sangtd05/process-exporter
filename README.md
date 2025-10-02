@@ -18,8 +18,6 @@ Process Exporter, Prometheus và Grafana để theo dõi hiệu suất và tài 
 
 ## Cài đặt và chạy
 
-### Chạy nhanh
-
 ```bash
 # Clone repository
 git clone <your-repo-url>
@@ -32,7 +30,7 @@ docker compose up -d
 docker compose ps
 ```
 
-### Truy cập giao diện
+### Truy cập
 
 - **Grafana Dashboard**: http://localhost:3000
   - Username: `admin`
