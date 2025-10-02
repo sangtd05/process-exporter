@@ -18,13 +18,7 @@ Một stack monitoring hoàn chỉnh sử dụng Process Exporter, Prometheus v�
 - **Context Switches**: Chuyển đổi ngữ cảnh
 - **Thread Metrics**: Thông tin chi tiết về threads
 
-## 🛠️ Cài đặt và chạy
-
-### Yêu cầu hệ thống
-
-- Docker và Docker Compose
-- Hệ điều hành Linux (để truy cập `/proc`)
-- Port 3000, 9090, 9256, 9100 (optional) phải available
+## Cài đặt và chạy
 
 ### Chạy nhanh
 
@@ -48,28 +42,7 @@ docker compose ps
 - **Prometheus**: http://localhost:9090
 - **Process Exporter Metrics**: http://localhost:9256/metrics
 
-## 📁 Cấu trúc dự án
-
-```
-process-monitoring-stack/
-├── docker-compose.yml          # Cấu hình tất cả services
-├── prometheus.yml              # Cấu hình Prometheus
-├── grafana/
-│   ├── provisioning/
-│   │   ├── datasources/
-│   │   │   └── prometheus.yml  # Cấu hình datasource
-│   │   └── dashboards/
-│   │       └── dashboard.yml   # Cấu hình dashboard
-│   └── dashboards/
-│       └── process-monitoring.json  # Dashboard mẫu
-├── cmd/process-exporter/       # Source code process-exporter
-├── collector/                  # Process collector logic
-├── config/                     # Configuration handling
-├── proc/                       # /proc filesystem reader
-└── README.md
-```
-
-## ⚙️ Cấu hình
+## Cấu hình
 
 ### Process Exporter
 
@@ -101,7 +74,7 @@ scrape_configs:
     scrape_interval: 5s
 ```
 
-## 📈 Dashboard
+## Dashboard
 
 Dashboard "Process Monitoring Dashboard" bao gồm:
 
@@ -110,7 +83,7 @@ Dashboard "Process Monitoring Dashboard" bao gồm:
 3. **Memory Usage**: RAM sử dụng (resident memory)
 4. **I/O Rate**: Tốc độ đọc/ghi dữ liệu
 
-## 🔧 Quản lý Services
+## Quản lý Services
 
 ```bash
 # Xem logs
@@ -128,36 +101,7 @@ docker compose down -v
 # Rebuild và chạy lại
 docker compose up -d --build
 ```
-
-## 🐛 Troubleshooting
-
-### Process Exporter không thu thập được metrics
-
-```bash
-# Kiểm tra logs
-docker compose logs process-exporter
-
-# Kiểm tra quyền truy cập /proc
-docker compose exec process-exporter ls -la /host/proc
-```
-
-### Prometheus không scrape được metrics
-
-```bash
-# Kiểm tra targets
-curl http://localhost:9090/api/v1/targets
-
-# Kiểm tra metrics endpoint
-curl http://localhost:9256/metrics
-```
-
-### Grafana không hiển thị data
-
-1. Kiểm tra datasource connection
-2. Verify Prometheus có data
-3. Check dashboard queries
-
-## 📝 Customization
+## Customization
 
 ### Thêm Dashboard mới
 
@@ -176,21 +120,3 @@ rule_files:
 ### Monitor thêm services
 
 Thêm service mới vào `docker-compose.yml` và cấu hình scrape trong `prometheus.yml`.
-
-## 🤝 Đóng góp
-
-1. Fork repository
-2. Tạo feature branch
-3. Commit changes
-4. Push và tạo Pull Request
-
-## 📄 License
-
-MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết.
-
-## 🔗 Liên kết hữu ích
-
-- [Process Exporter Documentation](https://github.com/ncabatoff/process-exporter)
-- [Prometheus Documentation](https://prometheus.io/docs/)
-- [Grafana Documentation](https://grafana.com/docs/)
-- [Docker Compose Documentation](https://docs.docker.com/compose/)
