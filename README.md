@@ -1,15 +1,13 @@
-# Process Monitoring Stack
+Process Exporter, Prometheus và Grafana để theo dõi hiệu suất và tài nguyên của các tiến trình trên hệ thống Linux.
 
-Một stack monitoring hoàn chỉnh sử dụng Process Exporter, Prometheus và Grafana để theo dõi hiệu suất và tài nguyên của các tiến trình trên hệ thống Linux.
-
-## 🚀 Tính năng
+## Tính năng
 
 - **Process Exporter**: Thu thập metrics chi tiết về các tiến trình từ `/proc`
 - **Prometheus**: Lưu trữ và query metrics
 - **Grafana**: Dashboard trực quan với các biểu đồ monitoring
 - **Node Exporter**: Monitor tài nguyên hệ thống (optional)
 
-## 📊 Metrics được thu thập
+## Metrics được thu thập
 
 - **CPU Usage**: Thời gian CPU sử dụng theo nhóm tiến trình
 - **Memory Usage**: RAM sử dụng (resident, virtual, swapped)
